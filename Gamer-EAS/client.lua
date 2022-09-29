@@ -5,16 +5,24 @@ AddEventHandler("SendAlert", function(msg, msg2)
         enable  = true,
         issuer  = msg,
         message = msg2,
-        volume  = Config.EAS.Volume
+        volume  = Config.EAS.Volume,
+        timer = Config.EAS.Time
     })
 end)
 
 RegisterNetEvent("alert:Send")
-AddEventHandler("alert:Send", function(msg, args)
+AddEventHandler("alert:Send", function(msg, args, departments)
     local departments1 = args[1]
     
-    print(msg)
-    TriggerEvent("SendAlert", departments1, msg)
+    for i, v in pairs(departments) do
+        if departments1 == i then
+            depname = departments[i].name
+            TriggerServerEvent("alert:sv", depname, msg)
+            TriggerEvent("SendAlert", depname, msg)
+        end
+    end
+
+    
 
 
 end)

@@ -12,9 +12,7 @@ end
 
 RegisterServerEvent("alert:sv")
 AddEventHandler("alert:sv", function (msg, msg2)
-	if (isAdmin(source)) then
-    		TriggerClientEvent("SendAlert", -1, msg, msg2)
-	end
+    TriggerClientEvent("SendAlert", -1, msg, msg2)
 end)
 
 RegisterCommand('alert', function(source, args, rawCommand)

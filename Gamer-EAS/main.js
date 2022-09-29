@@ -1,15 +1,55 @@
     var snd = new Audio("alert.mp3");
+    function alert(volume, timers){
+        timer1 = timers * 1000;
+        snd.volume = volume;
+        var playing = true
+        snd.play();
+        
 
-function alert(volume){
-    snd.volume = volume;
-    snd.play();
-    setTimeout(function(){
-        snd.pause();
-        snd.currentTime = 0;
-        document.body.style.display = "none";
-    }, 22000);
-}
-
+        
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 17000);
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 34000);
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 51000);
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 68000);
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 85000);
+        setTimeout(function(){
+            if (playing == true){
+                snd.currentTime = 0;
+                snd.play();
+            }
+        }, 102000);
+        setTimeout(function(){
+            snd.pause();
+            playing = false;
+            snd.currentTime = 0;
+            document.body.style.display = "none";
+        }, timer1);
+    }
 function hide() {
     var x = document.getElementById("eas");
     if (document.body.style.display === "none") {
@@ -32,11 +72,13 @@ function addCommas(nStr) {
 }
 
 $(function() {
+    
 	window.addEventListener('message', function(event) {
 		if (event.data.type == "alert") {
             $('.eas_alerter').html('<p>Alert Issued by:</p> <p>'+event.data.issuer+'</p> </marquee><marquee behavior="scroll" direction="left" scrollamount="20"><p>'+event.data.message+'</p></marquee>');
             document.body.style.display = event.data.enable ? "block" : "none";
-            alert(event.data.volume)
+            alert(event.data.volume, event.data.timer)
 		}
 	});
 });
+
