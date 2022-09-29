@@ -2,7 +2,7 @@
 Basic EAS script for fivem The script is easy to setup and almost just drag and drop
 
 To setup the script drag it into a folder and edit the server_config.lua file and add as many departments as you want
-You can also edit the sound volume in the config.lua file!
+You can also edit the sound volume and the time it should show up in the config.lua file!
 
 Ace Perms you need to add: add_ace group.admin "Gamer.EAS" allow
 
